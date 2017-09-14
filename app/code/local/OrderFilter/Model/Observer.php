@@ -10,6 +10,22 @@ class GuilhermeRossato_OrderFilter_Model_Observer
     */
     public function filterOrder($event)
     {
+        $order = $event->getOrder();
+        // Use the following line to see what properties can be retrieved from any Varien Object:
+        // Mage::log($order->debug(), null, "order.log", true);
+
+        $shippingMethod = $order->getShippingMethod(); // Example: flatrate_flatrate
+        $paymentCode = $order->getPayment()->getMethodInstance()->getCode();
+        $total = $order->getGrandTotal(); // Shows as full number, no prefix, example: 79.99
+        $subtotal = $order->getBaseSubtotal();
+
+
+        // if ($total < 1000) {
+        //      $this->raiseError("Error: Only orders above 1000 dollars are accepted");
+        // }
+
+        $this->raiseError("We are not accept any new orders currently");
+        return $this;
     }
 
     private function raiseError($errMessage)
