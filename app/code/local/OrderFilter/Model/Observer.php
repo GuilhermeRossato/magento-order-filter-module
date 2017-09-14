@@ -35,7 +35,7 @@ class GuilhermeRossato_OrderFilter_Model_Observer
     }
 
     /*
-    * For when an order has to be modified / something has to be done
+     * For when an order has to be modified / something has to be done
     */
     private function _processOrderStatus($order)
     {
@@ -51,9 +51,17 @@ class GuilhermeRossato_OrderFilter_Model_Observer
     }
 
     /*
-    * The following functions happens before the "filterObject" method. Both methods happen before the order is placed.
-    * Depending on how the payment is done, this might land you in a different page entirely
-    */
+     *   Iterate over all items in an order to do any relevant task
+     */
+    private function iterateOrder($order) {
+        $items = $order->getAllItems();
+        foreach($items as $item){
+            if ($item->getSku() == '...') {
+                // ...
+            }
+        }
+    }
+
     public function checkBeforeSaving(Varien_Event_Observer $observer) {
         $event = $observer->getEvent();
         $order = $event->getOrder();
@@ -61,6 +69,7 @@ class GuilhermeRossato_OrderFilter_Model_Observer
         $this->raiseError("Blocked before everything - before");
         return $this;
     }
+
     public function checkAfterSaving(Varien_Event_Observer $observer) {
         $event = $observer->getEvent();
         $order = $event->getOrder();
