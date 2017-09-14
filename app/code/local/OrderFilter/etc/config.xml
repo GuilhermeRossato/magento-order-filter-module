@@ -35,7 +35,7 @@
                     <auto_invoice_order>
                         <type>singleton</type>
                         <class>GuilhermeRossato_OrderFilter_Model_Observer</class>
-                        <method>filterOrder</method>
+                        <method>checkAfterSaving</method>
                     </auto_invoice_order>
                 </observers>
             </sales_order_place_after>
