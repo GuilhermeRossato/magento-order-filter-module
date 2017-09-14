@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <GuilhermeRossato_OrderFilter>
+            <active>true</active>
+            <codePool>local</codePool>
+        </GuilhermeRossato_OrderFilter>
+    </modules>
+</config>
